@@ -2,7 +2,7 @@ import { Controller, Post, Get, Body, Headers, Logger } from '@nestjs/common';
 import { WalletService } from '../wallet/wallet.service';
 import { UsersService } from '../users/users.service';
 
-@Controller('nium-webhook')
+@Controller('webhook')
 export class NiumWebhookController {
   private readonly logger = new Logger(NiumWebhookController.name);
 
@@ -39,6 +39,11 @@ export class NiumWebhookController {
     // Handle Client Prefund Approval (Pool Level)
     if (payload.template === 'CARD_PRE_FUND_APPROVAL_WEBHOOK') {
       this.logger.log(`[Nium Webhook] Client Prefund APPROVED: ${payload.transactionAmount} ${payload.prefundCurrency} (Ref: ${payload.transactionId})`);
+    }
+
+    // Handle Card POS Transactions
+    if (payload.template === 'CARD_POS_APPROVED_WEBHOOK') {
+      this.logger.log(`[Nium Webhook] POS TRANSACTION APPROVED: ${payload.transactionAmount} ${payload.transactionCurrency} at ${payload.merchantName} (${payload.merchantCity}, ${payload.merchantCountry})`);
     }
 
     // Handle Declined Transfers

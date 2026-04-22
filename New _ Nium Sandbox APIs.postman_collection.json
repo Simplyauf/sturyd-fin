@@ -1,0 +1,294 @@
+{
+  "info": {
+    "_postman_id": "9aa27f79-09e0-401a-939d-82440ce16579",
+    "name": "Nium Sandbox APIs",
+    "description": "Nium Sandbox API Collection for Remittance Flow",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "34898548"
+  },
+  "item": [
+    {
+      "name": "GetClientDetails",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true,
+        "disabledSystemHeaders": {
+          "content-length": true,
+          "host": true,
+          "user-agent": true,
+          "accept": true,
+          "accept-encoding": true,
+          "connection": true
+        }
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "XVPIu9Op851bgfdLTnhMJ5SVBVO1yQkJ2w9J9TU5"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"x-api-key\": \"XVPIu9Op851bgfdLTnhMJ5SVBVO1yQkJ2w9J9TU5\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://gateway.nium.com/api/v1/client/4c2b702a-3f26-4a57-9248-1fc5cfea78de",
+          "protocol": "https",
+          "host": [
+            "gateway",
+            "nium",
+            "com"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "client",
+            "4c2b702a-3f26-4a57-9248-1fc5cfea78de"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2.Prefund",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true,
+        "disabledSystemHeaders": {
+          "connection": true,
+          "accept-encoding": true,
+          "accept": true,
+          "user-agent": true,
+          "host": true,
+          "content-length": true,
+          "content-type": true
+        }
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}",
+            "disabled": true
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "x-api-key",
+            "value": "z",
+            "type": "text"
+          },
+          {
+            "key": "accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "https://gateway.nium.com/api/v1/client/c2a360b1-340c-48e4-9bb9-8cb9a7a5ada9/prefund",
+          "protocol": "https",
+          "host": [
+            "gateway",
+            "nium",
+            "com"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "client",
+            "c2a360b1-340c-48e4-9bb9-8cb9a7a5ada9",
+            "prefund"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3. Add Customer",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Raj Patel\",\n  \"accountNumber\": \"1234567890\",\n  \"bankCode\": \"HDFC0001234\",\n  \"country\": \"IN\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/v1/beneficiaries",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "beneficiaries"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "4Add Beneficary",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/fx/rates?sourceCurrency=USD&destinationCurrency=INR",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "fx",
+            "rates"
+          ],
+          "query": [
+            {
+              "key": "sourceCurrency",
+              "value": "USD"
+            },
+            {
+              "key": "destinationCurrency",
+              "value": "INR"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "5. Send Money (Remittance)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sourceCurrency\": \"USD\",\n  \"destinationCurrency\": \"INR\",\n  \"amount\": 100,\n  \"beneficiaryId\": \"BENEFICIARY_ID\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/v1/remittances",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "remittances"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "6. Get Transaction Status",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/v1/remittances/{{transaction_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "v1",
+            "remittances",
+            "{{transaction_id}}"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://api.sandbox.nium.com"
+    },
+    {
+      "key": "client_id",
+      "value": "YOUR_CLIENT_ID"
+    },
+    {
+      "key": "client_secret",
+      "value": "YOUR_CLIENT_SECRET"
+    },
+    {
+      "key": "access_token",
+      "value": ""
+    }
+  ]
+}

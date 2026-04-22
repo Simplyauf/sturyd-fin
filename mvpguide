@@ -1,0 +1,37 @@
+his Wii be the flow 
+
+Phase 1 – MVP (No Stripe)
+Flow:
+Customer → App → Backend → Nium → Recipient (India)
+Mercury → funds → Nium
+
+Steps:
+1.⁠ ⁠User signup and KYC
+2.⁠ ⁠Add beneficiary (India bank details)
+3.⁠ ⁠Generate FX quote
+4.⁠ ⁠Confirm transfer
+5.⁠ ⁠Prefund Nium via Mercury
+6.⁠ ⁠Execute payout via Nium
+7.⁠ ⁠Track status via webhooks
+8.⁠ ⁠Display confirmation to user
+
+Backend Architecture
+Core services:
+•⁠  ⁠Authentication
+•⁠  ⁠User/KYC service
+•⁠  ⁠Beneficiary service
+•⁠  ⁠Quote service
+•⁠  ⁠Payout service
+•⁠  ⁠Webhook handler
+•⁠  ⁠Ledger & reconciliation
+
+Database Structure
+Tables:
+•⁠  ⁠Users
+•⁠  ⁠Beneficiaries
+•⁠  ⁠Transactions
+•⁠  ⁠Quotes
+•⁠  ⁠Wallet Balance
+•⁠  ⁠Webhook Logs
+
+we need to mock we dont have pro vider apis

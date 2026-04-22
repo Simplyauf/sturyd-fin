@@ -46,7 +46,7 @@ export class FintechAPI {
   private baseUrl: string;
   private token: string | null = null;
 
-  constructor(baseUrl: string = 'http://localhost:3000') {
+  constructor(baseUrl: string = 'https://globaltech.fitro.tech') {
     this.baseUrl = baseUrl;
   }
 

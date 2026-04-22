@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Headers, Logger } from '@nestjs/common';
+import { Controller, Post, Get, Body, Headers, Logger } from '@nestjs/common';
 import { WalletService } from '../wallet/wallet.service';
 import { UsersService } from '../users/users.service';
 
@@ -10,6 +10,11 @@ export class NiumWebhookController {
     private readonly walletService: WalletService,
     private readonly usersService: UsersService,
   ) {}
+
+  @Get()
+  healthCheck() {
+    return { status: 'webhook listener is alive' };
+  }
 
   @Post()
   async handleWebhook(@Body() payload: any, @Headers('x-request-id') requestId: string) {

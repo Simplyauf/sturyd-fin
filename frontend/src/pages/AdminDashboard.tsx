@@ -78,11 +78,11 @@ const AdminDashboard: React.FC = () => {
       )
     : transactions;
 
-  const statusDot = (status: string) => {
-    if (status === 'SETTLED') return 'bg-green-500';
-    if (status === 'FAILED') return 'bg-red-500';
-    return 'bg-blue-500';
-  };
+  // const statusDot = (status: string) => {
+  //   if (status === 'SETTLED') return 'bg-green-500';
+  //   if (status === 'FAILED') return 'bg-red-500';
+  //   return 'bg-blue-500';
+  // };
 
   if (isLoading) return null;
 

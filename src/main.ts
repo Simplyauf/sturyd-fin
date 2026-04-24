@@ -9,9 +9,12 @@ async function bootstrap() {
   app.use(urlencoded({ limit: '50mb', extended: true }));
   app.useGlobalPipes(new ValidationPipe());
   app.enableCors();
+  app.setGlobalPrefix('api', {
+    exclude: ['webhook'],
+  });
   await app.listen(process.env.PORT ?? 3000);
   console.log(`Application is running on: ${await app.getUrl()}`);
 }
-
+∏
 bootstrap();
 
